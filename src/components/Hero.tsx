@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -10,8 +9,10 @@ const Hero = () => {
   }, []);
 
   const handleDownloadResume = () => {
-    // Placeholder for resume download
-    console.log("Resume download initiated");
+    // Direct link to your Google Drive resume
+    const resumeUrl = "https://drive.google.com/file/d/1NIAo0TSpN_srA-lIm8Dtdn31Uo10IYTR/view?usp=sharing";
+    window.open(resumeUrl, '_blank');
+    console.log("Opening resume from Google Drive");
   };
 
   return (

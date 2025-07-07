@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,11 +13,20 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
+    
+    // Currently this is a frontend-only form - it shows a success message but doesn't actually send emails
+    // To make it functional, you would need to integrate with a backend service like:
+    // - EmailJS for client-side email sending
+    // - A backend API with email service (SendGrid, Mailgun, etc.)
+    // - Supabase Edge Functions for server-side email handling
+    
+    console.log("Form submission attempt:", formData);
+    
     toast({
-      title: "Message sent!",
-      description: "Thank you for your message. I'll get back to you soon!",
+      title: "Message received!",
+      description: "Thank you for your message. Note: This is currently a demo form. To make it functional, you'll need to integrate with an email service.",
     });
+    
     setFormData({ name: "", email: "", message: "" });
   };
 
@@ -53,10 +61,12 @@ const Contact = () => {
   ];
 
   const handleDownloadResume = () => {
-    // Placeholder for resume download
+    // Direct link to your Google Drive resume
+    const resumeUrl = "https://drive.google.com/file/d/1NIAo0TSpN_srA-lIm8Dtdn31Uo10IYTR/view?usp=sharing";
+    window.open(resumeUrl, '_blank');
     toast({
-      title: "Resume Download",
-      description: "Resume download would be initiated here.",
+      title: "Opening Resume",
+      description: "Your resume is opening in a new tab from Google Drive.",
     });
   };
 
@@ -108,6 +118,12 @@ const Contact = () => {
           {/* Contact Form */}
           <div>
             <h3 className="text-2xl font-bold mb-8">Send a Message</h3>
+            <div className="mb-4 p-3 bg-yellow-900/30 border border-yellow-600 rounded-lg">
+              <p className="text-yellow-200 text-sm">
+                📧 <strong>Note:</strong> This contact form is currently for demonstration purposes. 
+                For actual inquiries, please email me directly at <a href="mailto:neerajsa@umich.edu" className="text-teal-300 underline">neerajsa@umich.edu</a>
+              </p>
+            </div>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <Input
@@ -146,7 +162,7 @@ const Contact = () => {
                 type="submit"
                 className="w-full bg-teal-600 hover:bg-teal-700 text-white py-3 font-semibold rounded-lg transition-all duration-300"
               >
-                Send Message
+                Send Message (Demo)
               </Button>
             </form>
           </div>
