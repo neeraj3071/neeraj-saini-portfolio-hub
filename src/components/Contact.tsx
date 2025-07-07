@@ -1,42 +1,8 @@
-import { useState } from "react";
+
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Currently this is a frontend-only form - it shows a success message but doesn't actually send emails
-    // To make it functional, you would need to integrate with a backend service like:
-    // - EmailJS for client-side email sending
-    // - A backend API with email service (SendGrid, Mailgun, etc.)
-    // - Supabase Edge Functions for server-side email handling
-    
-    console.log("Form submission attempt:", formData);
-    
-    toast({
-      title: "Message received!",
-      description: "Thank you for your message. Note: This is currently a demo form. To make it functional, you'll need to integrate with an email service.",
-    });
-    
-    setFormData({ name: "", email: "", message: "" });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   const contactInfo = [
     {
       label: "Email",
@@ -82,19 +48,19 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="max-w-2xl mx-auto">
           {/* Contact Information */}
-          <div>
+          <div className="text-center">
             <h3 className="text-2xl font-bold mb-8">Contact Information</h3>
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
-                <div key={index} className="flex items-center">
+                <div key={index} className="flex items-center justify-center">
                   <div className="w-4 h-4 bg-teal-400 rounded-full mr-4"></div>
                   <div>
                     <p className="text-slate-400 text-sm">{info.label}</p>
                     <a
                       href={info.link}
-                      className="text-white hover:text-teal-400 transition-colors duration-200"
+                      className="text-white hover:text-teal-400 transition-colors duration-200 text-lg"
                       target={info.link.startsWith('http') ? '_blank' : '_self'}
                       rel="noopener noreferrer"
                     >
@@ -113,58 +79,6 @@ const Contact = () => {
                 Download Resume
               </Button>
             </div>
-          </div>
-
-          {/* Contact Form */}
-          <div>
-            <h3 className="text-2xl font-bold mb-8">Send a Message</h3>
-            <div className="mb-4 p-3 bg-yellow-900/30 border border-yellow-600 rounded-lg">
-              <p className="text-yellow-200 text-sm">
-                📧 <strong>Note:</strong> This contact form is currently for demonstration purposes. 
-                For actual inquiries, please email me directly at <a href="mailto:neerajsa@umich.edu" className="text-teal-300 underline">neerajsa@umich.edu</a>
-              </p>
-            </div>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <Input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-teal-400"
-                />
-              </div>
-              <div>
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-teal-400"
-                />
-              </div>
-              <div>
-                <Textarea
-                  name="message"
-                  placeholder="Your Message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-teal-400 resize-none"
-                />
-              </div>
-              <Button
-                type="submit"
-                className="w-full bg-teal-600 hover:bg-teal-700 text-white py-3 font-semibold rounded-lg transition-all duration-300"
-              >
-                Send Message (Demo)
-              </Button>
-            </form>
           </div>
         </div>
 
