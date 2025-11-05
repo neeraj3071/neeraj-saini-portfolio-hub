@@ -9,8 +9,7 @@ const Hero = () => {
   }, []);
 
   const handleDownloadResume = () => {
-    // Direct link to your Google Drive resume
-    const resumeUrl = "https://drive.google.com/file/d/1NIAo0TSpN_srA-lIm8Dtdn31Uo10IYTR/view?usp=sharing";
+    const resumeUrl = "https://drive.google.com/file/d/1QItMlpNxnJ8KD0kaLotL24Sfy_7OI5kT/view?usp=drive_link";
     window.open(resumeUrl, '_blank');
     console.log("Opening resume from Google Drive");
   };
@@ -35,25 +34,25 @@ const Hero = () => {
               : "opacity-0 translate-y-10"
           }`}
         >
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-teal-300 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-teal-300 bg-clip-text text-transparent animate-fade-in">
             Neeraj Randhir Singh Saini
           </h1>
-          <p className="text-xl md:text-2xl text-slate-300 mb-4">
+          <p className="text-xl md:text-2xl text-slate-300 mb-4 animate-fade-in-up animation-delay-200">
             📍 Dearborn, Michigan, USA
           </p>
-          <p className="text-lg md:text-xl text-slate-400 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-400 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animation-delay-400">
             "Building Scalable Software Solutions with Spring Boot, React, and Cloud Tech."
           </p>
-          <p className="text-md text-slate-500 mb-8">
+          <p className="text-md text-slate-500 mb-8 animate-fade-in-up animation-delay-600">
             Master of Science in Computer and Information Science | University of Michigan, Dearborn
           </p>
-          <p className="text-lg text-teal-300 mb-10">
+          <p className="text-lg text-teal-300 mb-10 animate-fade-in-up animation-delay-800">
             Open to Full-time & Internship Opportunities
           </p>
           
           <Button
             onClick={handleDownloadResume}
-            className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 text-lg font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 text-lg font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl animate-scale-in animation-delay-1000 hover:animate-glow"
           >
             Download Resume
           </Button>

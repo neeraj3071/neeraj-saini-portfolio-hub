@@ -27,8 +27,7 @@ const Contact = () => {
   ];
 
   const handleDownloadResume = () => {
-    // Direct link to your Google Drive resume
-    const resumeUrl = "https://drive.google.com/file/d/1NIAo0TSpN_srA-lIm8Dtdn31Uo10IYTR/view?usp=sharing";
+    const resumeUrl = "https://drive.google.com/file/d/1QItMlpNxnJ8KD0kaLotL24Sfy_7OI5kT/view?usp=drive_link";
     window.open(resumeUrl, '_blank');
     toast({
       title: "Opening Resume",
