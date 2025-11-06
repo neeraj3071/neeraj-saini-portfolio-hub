@@ -5,12 +5,21 @@ import { ExternalLink, Github, Youtube, Star } from "lucide-react";
 const Projects = () => {
   const projects = [
     {
+      name: "Real-Time IoT Vehicle Monitoring Dashboard",
+      description: "Cloud-native IoT solution for real-time vehicle monitoring with live telemetry visualization for 500+ vehicles using MQTT streaming.",
+      technologies: ["React.js", "Node.js", "Python", "MongoDB", "Kubernetes", "MQTT"],
+      sourceCode: "https://github.com/neeraj3071/IOT---Enabled-Vehicle-Monitoring-Dashboard",
+      gradient: "from-purple-500 to-pink-500",
+      highlights: "99.9% uptime via container orchestration, scalable data processing pipelines",
+      featured: true,
+    },
+    {
       name: "GreenChain – Community Eco Action Tracker",
-      description: "Community-driven sustainability platform that gamifies environmental action tracking with AI-powered recommendations.",
-      technologies: ["Python", "FastAPI", "React.js", "MongoDB", "Tailwind CSS", "Google Gemini API"],
+      description: "AI-powered sustainability tracker using Gemini API with JWT authentication and async queries, boosting API speed by 40%.",
+      technologies: ["React.js", "FastAPI", "MongoDB", "Google Gemini API", "JWT"],
       sourceCode: "https://github.com/neeraj3071/GreenChain-Community-Eco-Action-Tracker",
       gradient: "from-emerald-500 to-teal-500",
-      highlights: "Gamified eco-actions, AI sustainability tips, carbon footprint tracking",
+      highlights: "AI-powered eco-action insights, FastAPI backend with async optimization",
       featured: true,
     },
     {
@@ -20,15 +29,6 @@ const Projects = () => {
       sourceCode: "https://github.com/neeraj3071/HotWheels-Marketplace",
       gradient: "from-orange-500 to-red-500",
       highlights: "34 secure REST APIs, JWT authentication, real-time messaging, image uploads",
-      featured: true,
-    },
-    {
-      name: "IoT-Enabled Vehicle Monitoring Dashboard",
-      description: "Cloud-native IoT solution for real-time vehicle monitoring with ML predictions for fuel efficiency and vehicle health insights.",
-      technologies: ["React.js", "Node.js", "Flask", "MongoDB", "MQTT", "Python", "Docker"],
-      sourceCode: "https://github.com/neeraj3071/IOT---Enabled-Vehicle-Monitoring-Dashboard",
-      gradient: "from-purple-500 to-pink-500",
-      highlights: "Real-time telemetry via MQTT, ML predictions, containerized microservices",
       featured: true,
     },
     {

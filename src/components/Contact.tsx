@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
-import { Mail, Linkedin, Github, MapPin, Download } from "lucide-react";
+import { Mail, Linkedin, Github, MapPin, Download, Phone } from "lucide-react";
 
 const Contact = () => {
   const contactInfo = [
@@ -14,6 +14,13 @@ const Contact = () => {
       color: "text-teal-600",
     },
     {
+      label: "Phone",
+      value: "+1-313-285-0725",
+      link: "tel:+13132850725",
+      icon: Phone,
+      color: "text-emerald-600",
+    },
+    {
       label: "LinkedIn",
       value: "linkedin.com/in/neerajsaini07",
       link: "https://linkedin.com/in/neerajsaini07",
@@ -22,17 +29,17 @@ const Contact = () => {
     },
     {
       label: "GitHub",
-      value: "github.com/neeraj3071",
-      link: "https://github.com/neeraj3071",
+      value: "github.com/neerajsaini07",
+      link: "https://github.com/neerajsaini07",
       icon: Github,
       color: "text-slate-700",
     },
     {
       label: "Location",
-      value: "Dearborn, MI",
+      value: "Detroit, MI",
       link: "#",
       icon: MapPin,
-      color: "text-emerald-600",
+      color: "text-purple-600",
     },
   ];
 

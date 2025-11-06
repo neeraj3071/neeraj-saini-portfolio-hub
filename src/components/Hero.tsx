@@ -44,13 +44,13 @@ const Hero = () => {
           
           <div className="max-w-3xl mx-auto space-y-4 mb-10">
             <p className="text-xl md:text-2xl text-slate-700 animate-fade-in-up animation-delay-200 font-medium">
-              <span className="font-bold bg-gradient-to-r from-teal-600 to-emerald-600 bg-clip-text text-transparent">Software Developer</span> specializing in scalable solutions
+              <span className="font-bold bg-gradient-to-r from-teal-600 to-emerald-600 bg-clip-text text-transparent">Full-Stack Software Engineer</span> with 2 years of experience
             </p>
             <p className="text-lg text-slate-600 animate-fade-in-up animation-delay-400">
-              📍 Dearborn, Michigan, USA
+              📍 Detroit, Michigan, USA | 📞 +1-313-285-0725
             </p>
             <p className="text-base text-slate-500 animate-fade-in-up animation-delay-600">
-              Master of Science in Computer and Information Science<br/>
+              M.S. in Computer and Information Science (GPA: 3.95)<br/>
               University of Michigan, Dearborn
             </p>
           </div>

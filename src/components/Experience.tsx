@@ -3,47 +3,54 @@ import { Briefcase, Calendar, MapPin } from "lucide-react";
 const Experience = () => {
   const experiences = [
     {
-      company: "Reliance Jio Platforms Limited",
-      position: "Software Developer Engineer",
-      duration: "Sep 2023 - Aug 2024",
-      location: "Mumbai, India",
-      type: "Full-time",
-      achievements: [
-        "Designed and deployed 20+ scalable microservices for the HR Workflow Management System using Spring Boot, MySQL, and Kafka",
-        "Optimized deployment pipelines with Jenkins CI/CD, Kubernetes, and Azure Cloud, accelerating deployment speed by 25%",
-        "Developed and integrated a responsive React.js front end with robust back end, strengthening API communication",
-        "Enhanced testing coverage by 35% and reduced defect rates by 20% through complex MySQL query designs and automated testing",
-        "Facilitated DevOps collaboration to improve deployment efficiency and ensure adherence to unified development lifecycle"
-      ],
-      gradient: "from-blue-500 to-indigo-500",
-    },
-    {
-      company: "University of Michigan",
-      position: "Graduate Research Assistant - VR Testing and Refactoring",
-      duration: "Jan 2025 - Present",
+      company: "University of Michigan – Dearborn",
+      position: "Graduate Research Assistant",
+      duration: "Jan 2025 – Present",
       location: "Dearborn, MI",
       type: "Research",
       achievements: [
-        "Developed an automated VR testing tool, increasing test coverage by 40%",
-        "Reduced manual test execution time by 60%",
-        "Designed a Java-based VR framework that improved defect detection by 35%",
-        "Enhanced CI/CD pipeline efficiency by 50% through GitHub Actions and Jenkins integration"
+        "Performed large-scale analysis of 350+ commits across open-source projects, deriving structured insights on refactoring and software evolution",
+        "Devised a hybrid automation pipeline integrating analytics tools with Python classifiers, achieving 87.8% precision and reducing manual effort by 98.9%"
       ],
       gradient: "from-purple-500 to-pink-500",
     },
     {
-      company: "TEN Technologies",
-      position: "Software Developer Intern (Java)",
-      duration: "Feb 2022 - Jun 2022",
-      location: "Remote",
-      type: "Internship",
+      company: "Reliance Jio Platforms Limited",
+      position: "Software Developer Engineer",
+      duration: "Jun 2023 – Aug 2024",
+      location: "Mumbai, India",
+      type: "Full-time",
       achievements: [
-        "Developed and implemented a scalable inventory management system using Spring Boot, MySQL, and React",
-        "Reduced operational errors by 20% and demonstrated effective teamwork on hands-on projects",
-        "Enhanced system performance by 30% using SonarQube and IntelliJ IDEA",
-        "Refined load testing with JMeter and integrated CI/CD pipelines to support automation"
+        "Developed 30+ Spring Boot microservices with Kafka/MySQL, improving data synchronization efficiency by 40%",
+        "Optimized CI/CD using Jenkins and Kubernetes, cutting deployment time by 25% with zero downtime",
+        "Constructed React.js interfaces integrated with REST APIs, increasing performance and usability by 30%",
+        "Enhanced testing using JUnit, Selenium, and Postman, improving defect detection by 35%"
+      ],
+      gradient: "from-blue-500 to-indigo-500",
+    },
+    {
+      company: "Saini Battery and Auto Electrical Works",
+      position: "Software Developer & Operations Manager",
+      duration: "Aug 2022 – Oct 2023",
+      location: "Pune, India",
+      type: "Full-time",
+      achievements: [
+        "Created a billing and inventory system using React.js, Node.js, and MySQL, reducing processing time by 45%",
+        "Launched business website and automated reports, increasing online inquiries by 25% and cutting manual effort by 40%"
       ],
       gradient: "from-emerald-500 to-teal-500",
+    },
+    {
+      company: "The Entrepreneurship Network",
+      position: "Software Developer Intern",
+      duration: "Feb 2022 – Jun 2022",
+      location: "Pune, India",
+      type: "Internship",
+      achievements: [
+        "Engineered RESTful APIs using Node.js and Express.js to support data visualization tools",
+        "Optimized SQL queries and caching with Redis, achieving 35% faster execution"
+      ],
+      gradient: "from-orange-500 to-amber-500",
     },
   ];
 

@@ -5,8 +5,8 @@ import { Award, Rocket, TrendingUp } from "lucide-react";
 
 const About = () => {
   const stats = [
-    { icon: Award, value: "3.9", label: "Graduate GPA", color: "text-teal-600" },
-    { icon: Rocket, value: "20+", label: "Microservices Deployed", color: "text-emerald-600" },
+    { icon: Award, value: "3.95", label: "Graduate GPA", color: "text-teal-600" },
+    { icon: Rocket, value: "30+", label: "Microservices Deployed", color: "text-emerald-600" },
     { icon: TrendingUp, value: "99.9%", label: "System Uptime", color: "text-cyan-600" },
   ];
 
@@ -24,24 +24,24 @@ const About = () => {
             <div className="relative group">
               <div className="absolute -inset-4 bg-gradient-to-r from-teal-400 to-emerald-400 rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
               <Avatar className="relative w-64 h-64 mb-6 ring-4 ring-white ring-offset-4 ring-offset-teal-50 shadow-3d shadow-3d-hover hover:scale-105 transition-all duration-500 card-3d backface-hidden">
-                <AvatarImage src={profilePhoto} alt="Neeraj Randhir Singh Saini" />
+                <AvatarImage src={profilePhoto} alt="Neeraj Randhir Singh Saini" className="object-cover" />
                 <AvatarFallback>NS</AvatarFallback>
               </Avatar>
             </div>
           </div>
 
           <div className="space-y-6 animate-fade-in-up animation-delay-200">
-            <h3 className="text-3xl font-bold text-slate-900 leading-tight">Full-Stack Developer & Cloud Architect</h3>
+            <h3 className="text-3xl font-bold text-slate-900 leading-tight">Full-Stack Software Engineer</h3>
             <p className="text-lg text-slate-700 leading-relaxed">
-              I'm a Software Developer with a strong foundation in <span className="font-bold text-teal-600">microservices architecture</span>, 
-              real-time data streaming, and cloud-native applications.
+              Full-Stack Software Engineer with <span className="font-bold text-teal-600">2 years of experience</span> developing scalable web applications, 
+              microservices, and automation solutions. Skilled in building cloud-native applications with modern tech stacks.
             </p>
             <p className="text-lg text-slate-700 leading-relaxed">
-              I bring hands-on experience across the full software development lifecycle, and I thrive in 
-              collaborative, agile teams where <span className="font-bold text-emerald-600">high-quality software meets real-world impact</span>.
+              Expertise in <span className="font-bold text-emerald-600">CI/CD, containerization, and system optimization</span>, 
+              with a proven track record of improving efficiency and reducing deployment times in agile environments.
             </p>
             <div className="flex flex-wrap gap-3 pt-4">
-              {["Spring Boot", "React.js", "AWS", "Docker", "Kubernetes", "Python"].map((tech, idx) => (
+              {["Java", "Python", "React.js", "Spring Boot", "AWS", "Docker", "Kubernetes", "Node.js"].map((tech, idx) => (
                 <span 
                   key={tech} 
                   className="px-5 py-2.5 bg-white text-teal-700 rounded-xl text-sm font-semibold border-2 border-teal-200 hover:border-teal-400 hover:bg-teal-50 transition-all duration-300 shadow-3d hover:-translate-y-1"
