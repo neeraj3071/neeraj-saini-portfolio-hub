@@ -49,13 +49,13 @@ const Skills = () => {
           <div className="w-20 h-1.5 bg-gradient-to-r from-teal-600 to-emerald-600 mx-auto rounded-full animate-slide-in-right"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-1000">
           {skillCategories.map((category, index) => {
             const Icon = category.icon;
             return (
               <div
                 key={category.title}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-slate-100 animate-fade-in-up"
+                className="bg-white rounded-2xl p-8 transition-all duration-500 transform hover:-translate-y-4 border border-slate-100 animate-fade-in-up shadow-3d shadow-3d-hover card-3d backface-hidden"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-center mb-6">

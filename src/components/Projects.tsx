@@ -102,11 +102,11 @@ const Projects = () => {
           <p className="text-slate-600 mt-4 max-w-2xl mx-auto">Innovative solutions across full-stack development, AI, IoT, and cloud computing</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-1000">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-slate-100 animate-fade-in-up"
+              className="group bg-white rounded-2xl overflow-hidden transition-all duration-500 transform hover:-translate-y-4 border border-slate-100 animate-fade-in-up shadow-3d shadow-3d-hover card-3d backface-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Header with gradient */}

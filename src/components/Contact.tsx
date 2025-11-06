@@ -65,13 +65,13 @@ const Contact = () => {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
+          <div className="grid md:grid-cols-2 gap-6 mb-12 perspective-1000">
             {contactInfo.map((info, index) => {
               const Icon = info.icon;
               return (
                 <Card 
                   key={index} 
-                  className="bg-white/10 backdrop-blur-sm border-white/20 p-6 hover:bg-white/15 transition-all duration-300 transform hover:scale-105 animate-scale-in"
+                  className="bg-white/10 backdrop-blur-sm border-white/20 p-6 hover:bg-white/15 transition-all duration-500 transform hover:-translate-y-2 animate-scale-in shadow-3d card-3d backface-hidden"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <a
@@ -99,7 +99,7 @@ const Contact = () => {
             <Button
               onClick={handleDownloadResume}
               size="lg"
-              className="bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-white px-10 py-6 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl animate-glow"
+              className="bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-white px-10 py-6 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-3d shadow-3d-hover animate-glow"
             >
               <Download className="w-5 h-5 mr-2" />
               Download Resume

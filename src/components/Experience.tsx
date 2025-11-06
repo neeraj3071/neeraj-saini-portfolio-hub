@@ -74,7 +74,7 @@ const Experience = () => {
 
                 <div className={`lg:grid lg:grid-cols-2 lg:gap-12 ${index % 2 === 0 ? '' : 'lg:grid-flow-dense'}`}>
                   <div className={index % 2 === 0 ? '' : 'lg:col-start-2'}>
-                    <div className="bg-gradient-to-br from-white to-slate-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100">
+                    <div className="bg-gradient-to-br from-white to-slate-50 rounded-2xl p-8 transition-all duration-500 border border-slate-100 shadow-3d shadow-3d-hover card-3d backface-hidden transform hover:-translate-y-2">
                       <div className="flex items-start gap-4 mb-4">
                         <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${exp.gradient} flex items-center justify-center shadow-lg flex-shrink-0`}>
                           <Briefcase className="w-6 h-6 text-white" />
