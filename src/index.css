@@ -6,6 +6,7 @@
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
@@ -101,6 +102,10 @@
   html {
     scroll-behavior: smooth;
   }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
 }
 
 @layer utilities {
@@ -166,5 +171,271 @@
 
   .backface-hidden {
     backface-visibility: hidden;
+  }
+
+  /* Glitch Effect */
+  .glitch {
+    position: relative;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+
+  .glitch:hover::before {
+    animation: glitch-1 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+    color: hsl(var(--primary));
+    opacity: 0.8;
+  }
+
+  .glitch:hover::after {
+    animation: glitch-2 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+    color: hsl(var(--destructive));
+    opacity: 0.8;
+  }
+
+  @keyframes glitch-1 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-3px, 3px); }
+    40% { transform: translate(-3px, -3px); }
+    60% { transform: translate(3px, 3px); }
+    80% { transform: translate(3px, -3px); }
+  }
+
+  @keyframes glitch-2 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(3px, -3px); }
+    40% { transform: translate(3px, 3px); }
+    60% { transform: translate(-3px, -3px); }
+    80% { transform: translate(-3px, 3px); }
+  }
+
+  /* Morphing gradient background */
+  .gradient-morph {
+    background: linear-gradient(
+      45deg,
+      hsl(175 84% 90%) 0%,
+      hsl(160 60% 92%) 25%,
+      hsl(180 50% 95%) 50%,
+      hsl(200 40% 93%) 75%,
+      hsl(175 84% 90%) 100%
+    );
+    background-size: 400% 400%;
+    animation: gradient-morph 15s ease infinite;
+  }
+
+  @keyframes gradient-morph {
+    0%, 100% { background-position: 0% 50%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+  }
+
+  /* Floating animation variations */
+  .float-slow {
+    animation: float-slow 6s ease-in-out infinite;
+  }
+
+  .float-medium {
+    animation: float-medium 4s ease-in-out infinite;
+  }
+
+  .float-fast {
+    animation: float-fast 3s ease-in-out infinite;
+  }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+
+  @keyframes float-medium {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(-3deg); }
+  }
+
+  @keyframes float-fast {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Pulse glow */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { 
+      box-shadow: 0 0 20px rgba(20, 184, 166, 0.3),
+                  0 0 40px rgba(20, 184, 166, 0.1);
+    }
+    50% { 
+      box-shadow: 0 0 40px rgba(20, 184, 166, 0.5),
+                  0 0 80px rgba(20, 184, 166, 0.2);
+    }
+  }
+
+  /* Shimmer effect */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* Text gradient animation */
+  .text-gradient-animate {
+    background: linear-gradient(
+      90deg,
+      hsl(175 84% 32%),
+      hsl(160 84% 39%),
+      hsl(145 70% 36%),
+      hsl(175 84% 32%)
+    );
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-gradient 4s ease infinite;
+  }
+
+  @keyframes text-gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Typewriter cursor */
+  .typewriter-cursor::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+    color: hsl(var(--primary));
+    font-weight: 100;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* Magnetic hover effect */
+  .magnetic {
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .magnetic:hover {
+    transform: scale(1.05);
+  }
+
+  /* Tilt card effect */
+  .tilt-card {
+    transform-style: preserve-3d;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .tilt-card:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) scale(1.02);
+  }
+
+  .tilt-card-reverse:hover {
+    transform: perspective(1000px) rotateX(-5deg) rotateY(5deg) scale(1.02);
+  }
+
+  /* Orbit animation for floating elements */
+  .orbit {
+    animation: orbit 20s linear infinite;
+  }
+
+  .orbit-reverse {
+    animation: orbit-reverse 25s linear infinite;
+  }
+
+  @keyframes orbit {
+    0% { transform: rotate(0deg) translateX(50px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+  }
+
+  @keyframes orbit-reverse {
+    0% { transform: rotate(0deg) translateX(70px) rotate(0deg); }
+    100% { transform: rotate(-360deg) translateX(70px) rotate(360deg); }
+  }
+
+  /* Scale bounce */
+  .scale-bounce {
+    animation: scale-bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes scale-bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  /* Slide up reveal */
+  .reveal-up {
+    animation: reveal-up 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  @keyframes reveal-up {
+    0% { 
+      opacity: 0;
+      transform: translateY(60px);
+    }
+    100% { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Code bracket decoration */
+  .code-bracket::before {
+    content: '<';
+    color: hsl(var(--primary));
+    font-family: 'JetBrains Mono', monospace;
+    margin-right: 0.25rem;
+  }
+
+  .code-bracket::after {
+    content: '/>';
+    color: hsl(var(--primary));
+    font-family: 'JetBrains Mono', monospace;
+    margin-left: 0.25rem;
+  }
+
+  /* Image zoom on hover */
+  .img-zoom {
+    overflow: hidden;
+  }
+
+  .img-zoom img {
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .img-zoom:hover img {
+    transform: scale(1.1);
   }
 }

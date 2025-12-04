@@ -1,6 +1,5 @@
-
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, Youtube, Star } from "lucide-react";
+import { ExternalLink, Github, Youtube, Star, Folder, FolderOpen } from "lucide-react";
 
 const Projects = () => {
   const projects = [
@@ -93,42 +92,64 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-24 bg-gradient-to-br from-slate-50 to-teal-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-24 gradient-morph relative overflow-hidden">
+      {/* Code background decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.02]">
+        <pre className="text-xs font-mono text-foreground leading-relaxed p-8">
+{`function buildProject() {
+  const skills = ['React', 'Node', 'AWS'];
+  return skills.map(skill => deploy(skill));
+}
+
+class Developer {
+  constructor() {
+    this.passion = Infinity;
+  }
+}`}
+        </pre>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <span className="text-teal-600 font-semibold text-sm uppercase tracking-wide animate-fade-in">Portfolio</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mt-2 mb-4 animate-fade-in">Featured Projects</h2>
-          <div className="w-20 h-1.5 bg-gradient-to-r from-teal-600 to-emerald-600 mx-auto rounded-full animate-slide-in-right"></div>
-          <p className="text-slate-600 mt-4 max-w-2xl mx-auto">Innovative solutions across full-stack development, AI, IoT, and cloud computing</p>
+          <span className="inline-flex items-center gap-2 text-primary font-semibold text-sm uppercase tracking-wide animate-fade-in">
+            <Folder className="w-4 h-4" />
+            Portfolio
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-2 mb-4 animate-fade-in">Featured Projects</h2>
+          <div className="w-20 h-1.5 bg-gradient-to-r from-primary to-emerald-600 mx-auto rounded-full animate-slide-in-right"></div>
+          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">Innovative solutions across full-stack development, AI, IoT, and cloud computing</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-1000">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group bg-white rounded-2xl overflow-hidden transition-all duration-500 transform hover:-translate-y-4 border border-slate-100 animate-fade-in-up shadow-3d shadow-3d-hover card-3d backface-hidden"
+              className="group bg-card rounded-2xl overflow-hidden transition-all duration-500 border border-border animate-fade-in-up tilt-card shadow-3d shadow-3d-hover"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {/* Header with gradient */}
-              <div className={`h-2 bg-gradient-to-r ${project.gradient}`}></div>
+              {/* Header with gradient and shimmer */}
+              <div className={`h-2 bg-gradient-to-r ${project.gradient} shimmer`}></div>
               
               <div className="p-6">
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-teal-600 transition-colors leading-tight">
-                    {project.name}
-                  </h3>
+                  <div className="flex items-center gap-2">
+                    <FolderOpen className="w-5 h-5 text-primary group-hover:animate-wiggle" />
+                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
+                      {project.name}
+                    </h3>
+                  </div>
                   {project.featured && (
-                    <Star className="w-5 h-5 text-amber-500 fill-amber-500 flex-shrink-0" />
+                    <Star className="w-5 h-5 text-amber-500 fill-amber-500 flex-shrink-0 animate-bounce-subtle" />
                   )}
                 </div>
                 
-                <p className="text-slate-600 mb-4 leading-relaxed text-sm">
+                <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
                   {project.description}
                 </p>
 
                 {project.highlights && (
-                  <div className="mb-4 p-3 bg-gradient-to-r from-teal-50 to-emerald-50 rounded-lg border-l-2 border-teal-600">
-                    <p className="text-xs text-teal-800 font-medium leading-relaxed">
+                  <div className="mb-4 p-3 bg-gradient-to-r from-accent to-emerald-50 rounded-lg border-l-2 border-primary">
+                    <p className="text-xs text-primary font-medium leading-relaxed">
                       ⭐ {project.highlights}
                     </p>
                   </div>
@@ -139,13 +160,13 @@ const Projects = () => {
                     {project.technologies.slice(0, 3).map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-slate-100 text-slate-700 rounded-lg text-xs font-medium hover:bg-teal-50 hover:text-teal-700 border border-slate-200 hover:border-teal-300 transition-all duration-200"
+                        className="px-3 py-1 bg-secondary text-secondary-foreground rounded-lg text-xs font-medium hover:bg-accent hover:text-accent-foreground border border-border hover:border-primary transition-all duration-200"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.technologies.length > 3 && (
-                      <span className="px-3 py-1 bg-slate-100 text-slate-500 rounded-lg text-xs font-medium">
+                      <span className="px-3 py-1 bg-secondary text-muted-foreground rounded-lg text-xs font-medium">
                         +{project.technologies.length - 3} more
                       </span>
                     )}
@@ -156,7 +177,7 @@ const Projects = () => {
                   {project.liveDemo && (
                     <Button
                       size="sm"
-                      className="w-full bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white transition-all duration-300"
+                      className="w-full bg-gradient-to-r from-primary to-emerald-600 hover:from-primary/90 hover:to-emerald-600/90 text-primary-foreground transition-all duration-300 magnetic"
                       onClick={() => window.open(project.liveDemo, '_blank')}
                     >
                       <ExternalLink className="w-4 h-4 mr-2" />
@@ -180,7 +201,7 @@ const Projects = () => {
                     <Button
                       size="sm"
                       variant="outline"
-                      className="w-full border-2 border-slate-300 text-slate-700 hover:bg-slate-50 transition-all duration-300"
+                      className="w-full border-2 border-border text-foreground hover:bg-accent transition-all duration-300"
                       onClick={() => window.open(project.sourceCode, '_blank')}
                     >
                       <Github className="w-4 h-4 mr-2" />
@@ -197,7 +218,7 @@ const Projects = () => {
           <Button
             size="lg"
             variant="outline"
-            className="border-2 border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white transition-all duration-300 transform hover:scale-105 animate-scale-in px-8 py-6 text-lg rounded-xl"
+            className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 magnetic animate-scale-in px-8 py-6 text-lg rounded-xl shimmer"
             onClick={() => window.open("https://github.com/neeraj3071", '_blank')}
           >
             <Github className="w-5 h-5 mr-2" />
