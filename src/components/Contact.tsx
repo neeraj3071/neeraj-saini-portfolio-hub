@@ -29,8 +29,8 @@ const Contact = () => {
     },
     {
       label: "GitHub",
-      value: "github.com/neerajsaini3071",
-      link: "https://github.com/neerajsaini3071",
+      value: "github.com/neeraj3071",
+      link: "https://github.com/neeraj3071",
       icon: Github,
       color: "text-slate-700",
     },
