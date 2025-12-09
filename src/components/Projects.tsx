@@ -23,11 +23,12 @@ const Projects = () => {
     },
     {
       name: "Hot Wheels Marketplace – Full-Stack Collectibles Platform",
-      description: "Fully functional e-commerce platform for buying, selling, and managing collectible Hot Wheels cars with modern full-stack architecture.",
-      technologies: ["Next.js 14", "Node.js", "Express.js", "TypeScript", "PostgreSQL", "Prisma ORM", "Tailwind CSS", "Zustand"],
+      description: "Production-ready marketplace for Hot Wheels collectors featuring real-time messaging, advanced search & filtering, user collections & wishlists, and admin dashboard with content moderation.",
+      technologies: ["Next.js 16", "React 19", "TypeScript", "Node.js", "Express", "PostgreSQL", "Prisma ORM", "Tailwind CSS", "JWT", "bcrypt"],
       sourceCode: "https://github.com/neeraj3071/HotWheels-Marketplace",
+      liveDemo: "https://hotwheels-marketplace.vercel.app/",
       gradient: "from-orange-500 to-red-500",
-      highlights: "34 secure REST APIs, JWT authentication, real-time messaging, image uploads",
+      highlights: "34 REST API endpoints, 74 automated tests (88% pass rate), load tested 100+ concurrent users, zero security vulnerabilities, CI/CD on Render & Vercel",
       featured: true,
     },
     {

@@ -3,6 +3,65 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Section transition animations */
+.section-reveal {
+  @apply transition-all duration-1000 ease-out;
+}
+
+.section-hidden {
+  @apply opacity-0 translate-y-16;
+}
+
+.section-visible {
+  @apply opacity-100 translate-y-0;
+}
+
+/* Page transition overlay */
+.page-transition-overlay {
+  @apply fixed inset-0 z-50 pointer-events-none;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  animation: page-reveal 0.6s ease-out forwards;
+}
+
+@keyframes page-reveal {
+  0% { transform: scaleY(1); }
+  100% { transform: scaleY(0); }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Stagger children animation */
+.stagger-children > * {
+  @apply opacity-0 translate-y-8;
+  animation: stagger-fade-in 0.6s ease-out forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes stagger-fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Parallax scroll effect */
+.parallax-slow {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
