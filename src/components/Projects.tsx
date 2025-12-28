@@ -1,8 +1,5 @@
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, Youtube, Star, Folder, FolderOpen } from "lucide-react";
-import { Tilt3DCard, Float3D, GlowOrb } from "./3d/Scene3D";
-import { StaggerContainer, StaggerItem, RevealText, MagneticButton } from "./3d/AnimatedSection";
 
 const Projects = () => {
   const projects = [
@@ -96,211 +93,139 @@ const Projects = () => {
   ];
 
   return (
-    <section 
-      id="projects" 
-      className="py-24 bg-gradient-to-br from-background via-accent/20 to-background relative overflow-hidden"
-      style={{ perspective: "1200px" }}
-    >
-      {/* 3D Background */}
-      <GlowOrb color="primary" size="w-96 h-96" position="top-0 left-0" />
-      <GlowOrb color="purple-500" size="w-80 h-80" position="bottom-0 right-0" delay={2} />
-
-      {/* Floating code decoration */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-5">
-        <Float3D delay={0}>
-          <pre className="absolute top-20 left-10 text-xs font-mono text-foreground">
+    <section id="projects" className="py-24 gradient-morph relative overflow-hidden">
+      {/* Code background decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.02]">
+        <pre className="text-xs font-mono text-foreground leading-relaxed p-8">
 {`function buildProject() {
   const skills = ['React', 'Node', 'AWS'];
   return skills.map(skill => deploy(skill));
+}
+
+class Developer {
+  constructor() {
+    this.passion = Infinity;
+  }
 }`}
-          </pre>
-        </Float3D>
+        </pre>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <motion.span 
-            className="inline-flex items-center gap-2 text-primary font-semibold text-sm uppercase tracking-wide"
-            whileHover={{ scale: 1.05 }}
-          >
+        <div className="text-center mb-16">
+          <span className="inline-flex items-center gap-2 text-primary font-semibold text-sm uppercase tracking-wide animate-fade-in">
             <Folder className="w-4 h-4" />
             Portfolio
-          </motion.span>
-          <RevealText>
-            <h2 className="text-4xl md:text-6xl font-bold text-foreground mt-2 mb-4">Featured Projects</h2>
-          </RevealText>
-          <motion.div 
-            className="w-20 h-1.5 bg-gradient-to-r from-primary to-emerald-600 mx-auto rounded-full mb-4"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          />
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Innovative solutions across full-stack development, AI, IoT, and cloud computing
-          </p>
-        </motion.div>
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-2 mb-4 animate-fade-in">Featured Projects</h2>
+          <div className="w-20 h-1.5 bg-gradient-to-r from-primary to-emerald-600 mx-auto rounded-full animate-slide-in-right"></div>
+          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">Innovative solutions across full-stack development, AI, IoT, and cloud computing</p>
+        </div>
 
-        {/* Projects Grid */}
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" staggerDelay={0.1}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-1000">
           {projects.map((project, index) => (
-            <StaggerItem key={index}>
-              <Tilt3DCard intensity={10}>
-                <motion.div 
-                  className="group h-full bg-card rounded-2xl overflow-hidden border border-border shadow-xl hover:shadow-2xl transition-all duration-500"
-                  whileHover={{ y: -5 }}
-                >
-                  {/* Gradient header with shine */}
-                  <motion.div 
-                    className={`h-2 bg-gradient-to-r ${project.gradient} relative overflow-hidden`}
-                  >
-                    <motion.div 
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
-                      initial={{ x: "-100%" }}
-                      whileHover={{ x: "100%" }}
-                      transition={{ duration: 0.6 }}
-                    />
-                  </motion.div>
-                  
-                  <div className="p-6">
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex items-center gap-2">
-                        <motion.div
-                          whileHover={{ rotate: 15, scale: 1.1 }}
-                          transition={{ type: "spring", stiffness: 300 }}
-                        >
-                          <FolderOpen className="w-5 h-5 text-primary" />
-                        </motion.div>
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
-                          {project.name}
-                        </h3>
-                      </div>
-                      {project.featured && (
-                        <motion.div
-                          animate={{ rotate: [0, 10, -10, 0] }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                        >
-                          <Star className="w-5 h-5 text-amber-500 fill-amber-500 flex-shrink-0" />
-                        </motion.div>
-                      )}
-                    </div>
-                    
-                    <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
-                      {project.description}
-                    </p>
-
-                    {project.highlights && (
-                      <motion.div 
-                        className="mb-4 p-3 bg-gradient-to-r from-accent to-emerald-50 rounded-lg border-l-2 border-primary"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                      >
-                        <p className="text-xs text-primary font-medium leading-relaxed">
-                          ⭐ {project.highlights}
-                        </p>
-                      </motion.div>
-                    )}
-
-                    {/* Tech tags */}
-                    <div className="mb-6">
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.slice(0, 3).map((tech) => (
-                          <motion.span
-                            key={tech}
-                            className="px-3 py-1 bg-secondary text-secondary-foreground rounded-lg text-xs font-medium border border-border"
-                            whileHover={{ 
-                              scale: 1.05,
-                              backgroundColor: "hsl(var(--accent))",
-                              borderColor: "hsl(var(--primary))"
-                            }}
-                          >
-                            {tech}
-                          </motion.span>
-                        ))}
-                        {project.technologies.length > 3 && (
-                          <span className="px-3 py-1 bg-secondary text-muted-foreground rounded-lg text-xs font-medium">
-                            +{project.technologies.length - 3} more
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Action buttons */}
-                    <div className="space-y-2">
-                      {project.liveDemo && (
-                        <MagneticButton>
-                          <Button
-                            size="sm"
-                            className={`w-full bg-gradient-to-r ${project.gradient} hover:opacity-90 text-white transition-all duration-300`}
-                            onClick={() => window.open(project.liveDemo, '_blank')}
-                          >
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            {project.liveDemo.includes('youtube') ? 'View Demo' : 'Live Demo'}
-                          </Button>
-                        </MagneticButton>
-                      )}
-                      
-                      {project.presentation && (
-                        <MagneticButton>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            className="w-full border-2 border-orange-300 text-orange-600 hover:bg-orange-50 transition-all duration-300"
-                            onClick={() => window.open(project.presentation, '_blank')}
-                          >
-                            <Youtube className="w-4 h-4 mr-2" />
-                            Presentation
-                          </Button>
-                        </MagneticButton>
-                      )}
-
-                      {project.sourceCode && (
-                        <MagneticButton>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            className="w-full border-2 border-border text-foreground hover:bg-accent transition-all duration-300"
-                            onClick={() => window.open(project.sourceCode, '_blank')}
-                          >
-                            <Github className="w-4 h-4 mr-2" />
-                            Source Code
-                          </Button>
-                        </MagneticButton>
-                      )}
-                    </div>
-                  </div>
-                </motion.div>
-              </Tilt3DCard>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
-
-        {/* View all button */}
-        <motion.div 
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <MagneticButton>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 px-8 py-6 text-lg rounded-xl shadow-xl"
-              onClick={() => window.open("https://github.com/neeraj3071", '_blank')}
+            <div
+              key={index}
+              className="group bg-card rounded-2xl overflow-hidden transition-all duration-500 border border-border animate-fade-in-up tilt-card shadow-3d shadow-3d-hover"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <Github className="w-5 h-5 mr-2" />
-              View All Projects on GitHub
-            </Button>
-          </MagneticButton>
-        </motion.div>
+              {/* Header with gradient and shimmer */}
+              <div className={`h-2 bg-gradient-to-r ${project.gradient} shimmer`}></div>
+              
+              <div className="p-6">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <FolderOpen className="w-5 h-5 text-primary group-hover:animate-wiggle" />
+                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
+                      {project.name}
+                    </h3>
+                  </div>
+                  {project.featured && (
+                    <Star className="w-5 h-5 text-amber-500 fill-amber-500 flex-shrink-0 animate-bounce-subtle" />
+                  )}
+                </div>
+                
+                <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
+                  {project.description}
+                </p>
+
+                {project.highlights && (
+                  <div className="mb-4 p-3 bg-gradient-to-r from-accent to-emerald-50 rounded-lg border-l-2 border-primary">
+                    <p className="text-xs text-primary font-medium leading-relaxed">
+                      ⭐ {project.highlights}
+                    </p>
+                  </div>
+                )}
+
+                <div className="mb-6">
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.slice(0, 3).map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 bg-secondary text-secondary-foreground rounded-lg text-xs font-medium hover:bg-accent hover:text-accent-foreground border border-border hover:border-primary transition-all duration-200"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.technologies.length > 3 && (
+                      <span className="px-3 py-1 bg-secondary text-muted-foreground rounded-lg text-xs font-medium">
+                        +{project.technologies.length - 3} more
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  {project.liveDemo && (
+                    <Button
+                      size="sm"
+                      className="w-full bg-gradient-to-r from-primary to-emerald-600 hover:from-primary/90 hover:to-emerald-600/90 text-primary-foreground transition-all duration-300 magnetic"
+                      onClick={() => window.open(project.liveDemo, '_blank')}
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      {project.liveDemo.includes('youtube') ? 'View Demo' : 'Live Demo'}
+                    </Button>
+                  )}
+                  
+                  {project.presentation && (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="w-full border-2 border-orange-300 text-orange-600 hover:bg-orange-50 transition-all duration-300"
+                      onClick={() => window.open(project.presentation, '_blank')}
+                    >
+                      <Youtube className="w-4 h-4 mr-2" />
+                      Presentation
+                    </Button>
+                  )}
+
+                  {project.sourceCode && (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="w-full border-2 border-border text-foreground hover:bg-accent transition-all duration-300"
+                      onClick={() => window.open(project.sourceCode, '_blank')}
+                    >
+                      <Github className="w-4 h-4 mr-2" />
+                      Source Code
+                    </Button>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-16">
+          <Button
+            size="lg"
+            variant="outline"
+            className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 magnetic animate-scale-in px-8 py-6 text-lg rounded-xl shimmer"
+            onClick={() => window.open("https://github.com/neeraj3071", '_blank')}
+          >
+            <Github className="w-5 h-5 mr-2" />
+            View All Projects on GitHub
+          </Button>
+        </div>
       </div>
     </section>
   );

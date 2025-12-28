@@ -1,8 +1,5 @@
-import { motion } from "framer-motion";
 import { Code, Cloud, Wrench, Database, TestTube, Boxes, Brain, GitBranch, Sparkles, Zap } from "lucide-react";
 import { useState } from "react";
-import { Tilt3DCard, Float3D, GlowOrb } from "./3d/Scene3D";
-import { StaggerContainer, StaggerItem, RevealText } from "./3d/AnimatedSection";
 
 const Skills = () => {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
@@ -60,198 +57,129 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-24 relative overflow-hidden bg-gradient-to-br from-background via-accent/30 to-background" style={{ perspective: "1200px" }}>
-      {/* 3D Background */}
-      <GlowOrb color="primary" size="w-96 h-96" position="top-20 left-10" />
-      <GlowOrb color="emerald-500" size="w-80 h-80" position="bottom-20 right-10" delay={2} />
-      <GlowOrb color="cyan-500" size="w-64 h-64" position="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" delay={4} />
+    <section id="skills" className="py-24 relative overflow-hidden bg-gradient-to-br from-background via-accent/30 to-background">
+      {/* Animated grid background */}
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--primary)) 1px, transparent 0)`,
+          backgroundSize: '40px 40px'
+        }}></div>
+      </div>
 
-      {/* Floating particles with 3D depth */}
+      {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(20)].map((_, i) => (
-          <Float3D key={i} delay={i * 0.2} duration={4 + Math.random() * 4}>
-            <motion.div
-              className="absolute w-2 h-2 bg-primary/30 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                scale: [1, 1.5, 1],
-                opacity: [0.3, 0.7, 0.3],
-              }}
-              transition={{
-                duration: 3 + Math.random() * 2,
-                repeat: Infinity,
-                delay: i * 0.1,
-              }}
-            />
-          </Float3D>
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-primary/20 rounded-full float-slow"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${i * 0.3}s`,
+              animationDuration: `${4 + Math.random() * 4}s`,
+            }}
+          />
         ))}
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <motion.div 
-            className="inline-flex items-center gap-2 px-4 py-2 bg-card/50 backdrop-blur-xl border border-border/50 rounded-full mb-4"
-            whileHover={{ scale: 1.05 }}
-          >
-            <motion.div animate={{ rotate: 360 }} transition={{ duration: 8, repeat: Infinity, ease: "linear" }}>
-              <Sparkles className="w-4 h-4 text-primary" />
-            </motion.div>
-            <span className="text-primary font-semibold text-sm uppercase tracking-wide">My Expertise</span>
-            <motion.div animate={{ y: [-2, 2, -2] }} transition={{ duration: 1, repeat: Infinity }}>
-              <Zap className="w-4 h-4 text-yellow-500" />
-            </motion.div>
-          </motion.div>
-          
-          <RevealText>
-            <h2 className="text-4xl md:text-6xl font-bold text-foreground mt-2 mb-4">
-              <span className="text-gradient-animate">Technical</span> Skills
-            </h2>
-          </RevealText>
-          
-          <motion.div 
-            className="w-32 h-1.5 bg-gradient-to-r from-primary via-emerald-500 to-cyan-500 mx-auto rounded-full"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          />
-        </motion.div>
+      {/* Glassmorphism blobs */}
+      <div className="absolute top-20 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl float-slow"></div>
+      <div className="absolute bottom-20 right-10 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl float-medium animation-delay-2000"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl"></div>
 
-        {/* Skills Grid with 3D cards */}
-        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.1}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/50 backdrop-blur-xl border border-border/50 rounded-full mb-4 animate-fade-in">
+            <Sparkles className="w-4 h-4 text-primary animate-spin-slow" />
+            <span className="text-primary font-semibold text-sm uppercase tracking-wide">My Expertise</span>
+            <Zap className="w-4 h-4 text-yellow-500 animate-bounce-subtle" />
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold text-foreground mt-2 mb-4 animate-fade-in">
+            <span className="text-gradient-animate">Technical</span> Skills
+          </h2>
+          <div className="w-32 h-1.5 bg-gradient-to-r from-primary via-emerald-500 to-cyan-500 mx-auto rounded-full animate-slide-in-right"></div>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 perspective-1000">
           {skillCategories.map((category, index) => {
             const Icon = category.icon;
             const isHovered = hoveredCategory === category.title;
             
             return (
-              <StaggerItem key={category.title}>
-                <Tilt3DCard intensity={12}>
-                  <motion.div
-                    className="group relative h-full"
-                    onMouseEnter={() => setHoveredCategory(category.title)}
-                    onMouseLeave={() => setHoveredCategory(null)}
-                  >
-                    {/* Glow effect */}
-                    <motion.div 
-                      className={`absolute -inset-2 ${category.bgGlow} rounded-3xl blur-xl`}
-                      animate={{ opacity: isHovered ? 1 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                    
-                    <div className="relative h-full bg-card/70 backdrop-blur-xl rounded-2xl p-6 border border-border/50 hover:border-primary/50 transition-all duration-300 overflow-hidden">
-                      {/* Shine effect */}
-                      <motion.div 
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
-                        initial={{ x: "-100%" }}
-                        whileHover={{ x: "100%" }}
-                        transition={{ duration: 0.6 }}
-                      />
+              <div
+                key={category.title}
+                className="group relative"
+                onMouseEnter={() => setHoveredCategory(category.title)}
+                onMouseLeave={() => setHoveredCategory(null)}
+              >
+                {/* Glow effect on hover */}
+                <div className={`absolute -inset-2 ${category.bgGlow} rounded-3xl blur-xl transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-0'}`}></div>
+                
+                <div
+                  className="relative bg-card/70 backdrop-blur-xl rounded-2xl p-6 transition-all duration-500 border border-border/50 hover:border-primary/50 animate-fade-in-up tilt-card shadow-3d shadow-3d-hover overflow-hidden"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {/* Shine effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary-foreground/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                  </div>
 
-                      {/* Icon with 3D rotation */}
-                      <div className="flex flex-col items-center mb-5 relative">
-                        <motion.div 
-                          className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${category.gradient} flex items-center justify-center shadow-lg mb-3`}
-                          whileHover={{ scale: 1.15, rotateY: 15, rotateX: -10 }}
-                          transition={{ type: "spring", stiffness: 300 }}
-                          style={{ transformStyle: "preserve-3d" }}
-                        >
-                          <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-2xl" />
-                          <Icon className="w-8 h-8 text-white relative z-10" />
-                        </motion.div>
-                        
-                        <motion.h3 
-                          className="text-lg font-bold text-foreground text-center"
-                          animate={{ 
-                            color: isHovered ? "hsl(var(--primary))" : "hsl(var(--foreground))" 
-                          }}
-                        >
-                          {category.title}
-                        </motion.h3>
-                      </div>
-
-                      {/* Skills tags */}
-                      <div className="flex flex-wrap gap-2 justify-center">
-                        {category.skills.map((skill, skillIndex) => (
-                          <motion.span
-                            key={skill}
-                            className="px-3 py-1.5 bg-secondary/50 backdrop-blur-sm text-secondary-foreground rounded-lg text-xs font-medium border border-border/50 cursor-default"
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: (index * 0.1) + (skillIndex * 0.02) }}
-                            whileHover={{ 
-                              scale: 1.1,
-                              backgroundColor: "hsl(var(--primary))",
-                              color: "hsl(var(--primary-foreground))",
-                              y: -3
-                            }}
-                          >
-                            {skill}
-                          </motion.span>
-                        ))}
-                      </div>
-
-                      {/* Corner glow */}
-                      <motion.div 
-                        className={`absolute -bottom-4 -right-4 w-20 h-20 bg-gradient-to-br ${category.gradient} rounded-full blur-2xl`}
-                        animate={{ opacity: isHovered ? 0.4 : 0 }}
-                        transition={{ duration: 0.3 }}
-                      />
+                  <div className="flex flex-col items-center mb-5 relative">
+                    <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${category.gradient} flex items-center justify-center shadow-lg mb-3 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
+                      {/* Icon glow */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary-foreground/20 to-transparent rounded-2xl"></div>
+                      <Icon className="w-8 h-8 text-primary-foreground relative z-10" />
+                      
+                      {/* Pulse ring on hover */}
+                      <div className="absolute inset-0 rounded-2xl border-2 border-primary-foreground/30 scale-100 opacity-0 group-hover:scale-150 group-hover:opacity-0 transition-all duration-700 animate-ping"></div>
                     </div>
-                  </motion.div>
-                </Tilt3DCard>
-              </StaggerItem>
+                    <h3 className="text-lg font-bold text-foreground text-center group-hover:text-gradient-animate transition-all duration-300">
+                      {category.title}
+                    </h3>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    {category.skills.map((skill, skillIndex) => (
+                      <span
+                        key={skill}
+                        className="px-3 py-1.5 bg-secondary/50 backdrop-blur-sm text-secondary-foreground rounded-lg text-xs font-medium hover:bg-primary hover:text-primary-foreground border border-border/50 hover:border-primary transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 cursor-default"
+                        style={{ 
+                          animationDelay: `${(index * 0.1) + (skillIndex * 0.02)}s`,
+                          transitionDelay: `${skillIndex * 20}ms`
+                        }}
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Corner accent */}
+                  <div className={`absolute -bottom-2 -right-2 w-16 h-16 bg-gradient-to-br ${category.gradient} rounded-full blur-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500`}></div>
+                </div>
+              </div>
             );
           })}
-        </StaggerContainer>
+        </div>
 
-        {/* Skills counter */}
-        <motion.div 
-          className="mt-16 flex justify-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-        >
-          <motion.div 
-            className="inline-flex items-center gap-4 px-8 py-4 bg-card/50 backdrop-blur-xl border border-border/50 rounded-2xl shadow-xl"
-            whileHover={{ scale: 1.02 }}
-          >
-            {[
-              { value: "50+", label: "Technologies" },
-              { value: "7", label: "Categories" },
-              { value: "∞", label: "Learning" },
-            ].map((item, i) => (
-              <motion.div 
-                key={item.label}
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 + i * 0.1 }}
-              >
-                <motion.div 
-                  className="text-3xl font-bold text-gradient-animate"
-                  animate={{ scale: [1, 1.05, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
-                >
-                  {item.value}
-                </motion.div>
-                <div className="text-xs text-muted-foreground font-medium">{item.label}</div>
-                {i < 2 && <div className="hidden sm:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-10 bg-border" />}
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
+        {/* Skills count badge */}
+        <div className="mt-16 flex justify-center">
+          <div className="inline-flex items-center gap-4 px-8 py-4 bg-card/50 backdrop-blur-xl border border-border/50 rounded-2xl animate-fade-in-up animation-delay-800">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-gradient-animate">50+</div>
+              <div className="text-xs text-muted-foreground font-medium">Technologies</div>
+            </div>
+            <div className="w-px h-10 bg-border"></div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-gradient-animate">7</div>
+              <div className="text-xs text-muted-foreground font-medium">Categories</div>
+            </div>
+            <div className="w-px h-10 bg-border"></div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-gradient-animate">∞</div>
+              <div className="text-xs text-muted-foreground font-medium">Learning</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

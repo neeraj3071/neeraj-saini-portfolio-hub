@@ -1,18 +1,6 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
 import { Briefcase, Calendar, MapPin } from "lucide-react";
-import { Tilt3DCard, GlowOrb } from "./3d/Scene3D";
-import { RevealText, StaggerContainer, StaggerItem } from "./3d/AnimatedSection";
 
 const Experience = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-  
-  const lineHeight = useTransform(scrollYProgress, [0, 0.8], ["0%", "100%"]);
-
   const experiences = [
     {
       company: "University of Michigan – Dearborn",
@@ -67,142 +55,76 @@ const Experience = () => {
   ];
 
   return (
-    <section 
-      id="experience" 
-      className="py-24 bg-background relative overflow-hidden"
-      style={{ perspective: "1200px" }}
-      ref={containerRef}
-    >
-      {/* 3D Background */}
-      <GlowOrb color="primary" size="w-80 h-80" position="top-20 -left-40" />
-      <GlowOrb color="purple-500" size="w-64 h-64" position="bottom-40 -right-32" delay={2} />
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <motion.span 
-            className="text-primary font-semibold text-sm uppercase tracking-wide"
-            whileHover={{ scale: 1.05 }}
-          >
-            Career Journey
-          </motion.span>
-          <RevealText>
-            <h2 className="text-4xl md:text-6xl font-bold text-foreground mt-2 mb-4">Professional Experience</h2>
-          </RevealText>
-          <motion.div 
-            className="w-20 h-1.5 bg-gradient-to-r from-primary to-emerald-600 mx-auto rounded-full"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          />
-        </motion.div>
+    <section id="experience" className="py-24 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <span className="text-teal-600 font-semibold text-sm uppercase tracking-wide animate-fade-in">Career Journey</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mt-2 mb-4 animate-fade-in">Professional Experience</h2>
+          <div className="w-20 h-1.5 bg-gradient-to-r from-teal-600 to-emerald-600 mx-auto rounded-full animate-slide-in-right"></div>
+        </div>
 
         <div className="relative">
-          {/* Animated timeline line */}
-          <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-border/30 rounded-full overflow-hidden">
-            <motion.div 
-              className="w-full bg-gradient-to-b from-primary via-emerald-500 to-cyan-500 rounded-full"
-              style={{ height: lineHeight }}
-            />
-          </div>
+          {/* Timeline line */}
+          <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-teal-200 via-emerald-200 to-teal-200"></div>
 
-          <StaggerContainer className="space-y-12" staggerDelay={0.2}>
+          <div className="space-y-12">
             {experiences.map((exp, index) => (
-              <StaggerItem key={index}>
-                <div className="relative">
-                  {/* Timeline dot with pulse */}
-                  <motion.div 
-                    className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 -translate-y-4 z-10"
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ type: "spring", stiffness: 200, delay: index * 0.1 }}
-                  >
-                    <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${exp.gradient} ring-4 ring-background shadow-lg`} />
-                    <motion.div 
-                      className={`absolute inset-0 w-6 h-6 rounded-full bg-gradient-to-br ${exp.gradient}`}
-                      animate={{ scale: [1, 1.5], opacity: [0.5, 0] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    />
-                  </motion.div>
+              <div
+                key={index}
+                className={`relative animate-fade-in-up`}
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
+                {/* Timeline dot */}
+                <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 -translate-y-4">
+                  <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${exp.gradient} ring-4 ring-white shadow-lg`}></div>
+                </div>
 
-                  <div className={`lg:grid lg:grid-cols-2 lg:gap-12 ${index % 2 === 0 ? '' : 'lg:grid-flow-dense'}`}>
-                    <div className={index % 2 === 0 ? '' : 'lg:col-start-2'}>
-                      <Tilt3DCard intensity={8}>
-                        <motion.div 
-                          className="bg-card rounded-2xl p-8 border border-border shadow-xl hover:shadow-2xl transition-all duration-500"
-                          whileHover={{ y: -5 }}
-                        >
-                          {/* Gradient top border */}
-                          <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${exp.gradient} rounded-t-2xl`} />
-                          
-                          <div className="flex items-start gap-4 mb-4">
-                            <motion.div 
-                              className={`w-12 h-12 rounded-xl bg-gradient-to-br ${exp.gradient} flex items-center justify-center shadow-lg flex-shrink-0`}
-                              whileHover={{ scale: 1.1, rotate: 10 }}
-                              transition={{ type: "spring", stiffness: 300 }}
-                            >
-                              <Briefcase className="w-6 h-6 text-white" />
-                            </motion.div>
-                            <div className="flex-1">
-                              <h3 className="text-xl font-bold text-foreground mb-1">{exp.position}</h3>
-                              <p className="text-lg font-semibold text-primary mb-2">{exp.company}</p>
-                              <div className="flex flex-wrap gap-3 text-sm text-muted-foreground">
-                                <span className="flex items-center gap-1.5">
-                                  <Calendar className="w-4 h-4" />
-                                  {exp.duration}
-                                </span>
-                                <span className="flex items-center gap-1.5">
-                                  <MapPin className="w-4 h-4" />
-                                  {exp.location}
-                                </span>
-                                <motion.span 
-                                  className="inline-block px-3 py-1 bg-accent text-accent-foreground rounded-lg font-semibold border border-border"
-                                  whileHover={{ scale: 1.05 }}
-                                >
-                                  {exp.type}
-                                </motion.span>
-                              </div>
-                            </div>
+                <div className={`lg:grid lg:grid-cols-2 lg:gap-12 ${index % 2 === 0 ? '' : 'lg:grid-flow-dense'}`}>
+                  <div className={index % 2 === 0 ? '' : 'lg:col-start-2'}>
+                    <div className="bg-gradient-to-br from-white to-slate-50 rounded-2xl p-8 transition-all duration-500 border border-slate-100 shadow-3d shadow-3d-hover card-3d backface-hidden transform hover:-translate-y-2">
+                      <div className="flex items-start gap-4 mb-4">
+                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${exp.gradient} flex items-center justify-center shadow-lg flex-shrink-0`}>
+                          <Briefcase className="w-6 h-6 text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold text-slate-900 mb-1">
+                            {exp.position}
+                          </h3>
+                          <p className="text-lg font-semibold text-teal-600 mb-2">
+                            {exp.company}
+                          </p>
+                          <div className="flex flex-wrap gap-3 text-sm text-slate-600">
+                            <span className="flex items-center gap-1.5">
+                              <Calendar className="w-4 h-4" />
+                              {exp.duration}
+                            </span>
+                            <span className="flex items-center gap-1.5">
+                              <MapPin className="w-4 h-4" />
+                              {exp.location}
+                            </span>
+                            <span className="inline-block px-3 py-1 bg-teal-50 text-teal-700 rounded-lg font-semibold border border-teal-200">
+                              {exp.type}
+                            </span>
                           </div>
-                          
-                          <ul className="space-y-3 mt-6">
-                            {exp.achievements.map((achievement, idx) => (
-                              <motion.li 
-                                key={idx} 
-                                className="flex items-start group"
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
-                              >
-                                <motion.span 
-                                  className="text-primary mr-3 mt-1 text-lg"
-                                  animate={{ scale: [1, 1.2, 1] }}
-                                  transition={{ duration: 2, repeat: Infinity, delay: idx * 0.2 }}
-                                >
-                                  •
-                                </motion.span>
-                                <span className="text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors">
-                                  {achievement}
-                                </span>
-                              </motion.li>
-                            ))}
-                          </ul>
-                        </motion.div>
-                      </Tilt3DCard>
+                        </div>
+                      </div>
+                      
+                      <ul className="space-y-3 mt-6">
+                        {exp.achievements.map((achievement, idx) => (
+                          <li key={idx} className="flex items-start group">
+                            <span className="text-teal-600 mr-3 mt-1 text-lg">•</span>
+                            <span className="text-slate-700 leading-relaxed group-hover:text-slate-900 transition-colors">
+                              {achievement}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 </div>
-              </StaggerItem>
+              </div>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </div>
     </section>
