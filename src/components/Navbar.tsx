@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -7,89 +6,95 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
-    { href: "#home", label: "Home" },
-    { href: "#about", label: "About" },
-    { href: "#skills", label: "Skills" },
-    { href: "#experience", label: "Experience" },
-    { href: "#projects", label: "Projects" },
-    { href: "#contact", label: "Contact" },
+    { href: "#home", label: "home" },
+    { href: "#about", label: "about" },
+    { href: "#skills", label: "skills" },
+    { href: "#experience", label: "experience" },
+    { href: "#projects", label: "projects" },
+    { href: "#contact", label: "contact" },
   ];
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    element?.scrollIntoView({ behavior: "smooth" });
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
     setIsMobileMenuOpen(false);
   };
 
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-white/95 backdrop-blur-lg shadow-lg"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-5">
-          <div className="text-2xl font-bold">
-            <span className={`transition-colors ${isScrolled ? 'text-slate-900' : 'text-slate-900'}`}>
-              <span className="text-teal-600">N</span>eeraj
-            </span>
+    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-3xl">
+      <div
+        className={`flex justify-between items-center px-4 py-3 rounded-full brutal-border-2 brutal-shadow-sm transition-all duration-300 ${
+          isScrolled ? "bg-white/95 backdrop-blur-sm" : "bg-white/90"
+        }`}
+      >
+        {/* Logo mark */}
+        <button onClick={() => scrollToSection("#home")} className="flex items-center gap-2">
+          <div className="w-9 h-9 rounded-full bg-deep text-white flex items-center justify-center font-display font-bold text-lg">
+            n
           </div>
+          <span className="font-display font-bold text-deep text-lg hidden sm:inline">neeraj</span>
+        </button>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => scrollToSection(item.href)}
-                className={`px-4 py-2 font-medium transition-all duration-200 rounded-lg relative group ${
-                  isScrolled 
-                    ? 'text-slate-700 hover:text-teal-600' 
-                    : 'text-slate-700 hover:text-teal-600'
-                }`}
-              >
-                {item.label}
-                <span className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-teal-600 transition-all duration-200 group-hover:w-3/4 rounded-full"></span>
-              </button>
-            ))}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className={`md:hidden p-2 rounded-lg transition-colors ${
-              isScrolled ? 'text-slate-700' : 'text-slate-700'
-            }`}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+        {/* Desktop links */}
+        <div className="hidden md:flex items-center gap-1">
+          {navItems.map((item) => (
+            <button
+              key={item.href}
+              onClick={() => scrollToSection(item.href)}
+              className="px-3 py-1.5 text-sm font-body font-medium text-deep hover:bg-primary rounded-full transition-colors duration-200"
+            >
+              {item.label}
+            </button>
+          ))}
         </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden bg-white/98 backdrop-blur-lg rounded-2xl mb-4 py-4 shadow-xl border border-slate-200 animate-fade-in">
-            {navItems.map((item, index) => (
-              <button
-                key={item.href}
-                onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left px-6 py-3 text-slate-700 hover:text-teal-600 hover:bg-teal-50 transition-all duration-200 font-medium animate-fade-in"
-                style={{ animationDelay: `${index * 0.05}s` }}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-        )}
+        {/* CTA button */}
+        <button
+          onClick={() => {
+            window.open("https://drive.google.com/file/d/1QItMlpNxnJ8KD0kaLotL24Sfy_7OI5kT/view?usp=drive_link", "_blank");
+          }}
+          className="hidden md:block bg-deep text-white px-5 py-2 rounded-full font-display font-bold text-sm bouncy"
+        >
+          get resume
+        </button>
+
+        {/* Mobile menu button */}
+        <button
+          className="md:hidden p-2 text-deep"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden mt-2 bg-white brutal-border-2 brutal-shadow rounded-brutal p-4 animate-fade-in">
+          {navItems.map((item, index) => (
+            <button
+              key={item.href}
+              onClick={() => scrollToSection(item.href)}
+              className="block w-full text-left px-4 py-3 text-deep hover:bg-primary rounded-xl font-body font-medium transition-colors"
+              style={{ animationDelay: `${index * 0.05}s` }}
+            >
+              {item.label}
+            </button>
+          ))}
+          <button
+            onClick={() => {
+              window.open("https://drive.google.com/file/d/1QItMlpNxnJ8KD0kaLotL24Sfy_7OI5kT/view?usp=drive_link", "_blank");
+            }}
+            className="w-full mt-2 bg-deep text-white px-5 py-3 rounded-xl font-display font-bold text-sm"
+          >
+            get resume
+          </button>
+        </div>
+      )}
     </nav>
   );
 };
