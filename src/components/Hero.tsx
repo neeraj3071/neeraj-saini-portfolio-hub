@@ -109,7 +109,7 @@ const Hero = () => {
                   {[
                     { bg: "bg-primary", text: "shipped 30+ microservices 🚀", tilt: "tilt-neg-1" },
                     { bg: "bg-purple text-white", text: "aws + docker + k8s ☁️", tilt: "tilt-1" },
-                    { bg: "bg-pink text-white", text: "gpa: 3.95 @ umich 🎓", tilt: "tilt-neg-1" },
+                    { bg: "bg-pink text-white", text: "gpa: 3.96 @ umich 🎓", tilt: "tilt-neg-1" },
                     { bg: "bg-white", text: "react · spring boot · node", tilt: "tilt-1" },
                   ].map((post, i) => (
                     <div key={i} className={`${post.bg} ${post.tilt} brutal-border-2 brutal-shadow-sm rounded-2xl p-3`}>
