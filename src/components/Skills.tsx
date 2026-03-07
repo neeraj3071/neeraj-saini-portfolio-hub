@@ -1,26 +1,26 @@
-import { Code, Cloud, Wrench, Database, TestTube, Brain, GitBranch, Boxes } from "lucide-react";
+import { Code, Cloud, Database, TestTube, Shield, GitBranch, Boxes } from "lucide-react";
 
 const Skills = () => {
   const skillCategories = [
     {
       title: "languages",
-      skills: ["Java", "Python", "C++", "JavaScript", "TypeScript", "SQL", "HTML", "CSS", "XSL", "XML"],
+      skills: ["Java", "Python", "C++", "JavaScript", "TypeScript", "SQL", "HTML", "PHP", "GraphQL", "XML"],
       icon: Code,
       bg: "bg-primary",
       span: "lg:col-span-7",
       tilt: "tilt-1",
     },
     {
-      title: "frameworks",
-      skills: ["React.js", "Nest.js", "Spring Boot", "Node.js", "FastAPI", "Express.js", "Microservices"],
+      title: "frameworks & platforms",
+      skills: ["Spring Boot", "React.js", "Next.js", "Node.js", "FastAPI", "Nest.js", "Express.js", "Vue.js", "Angular", "Hibernate", "JDBC", "REST APIs", "Microservices"],
       icon: Boxes,
       bg: "bg-deep text-white",
       span: "lg:col-span-5",
       tilt: "tilt-neg-1",
     },
     {
-      title: "cloud/devops",
-      skills: ["AWS", "Azure", "Docker", "Kubernetes", "Jenkins", "GitHub Actions", "Kafka", "MQTT"],
+      title: "cloud & devops",
+      skills: ["AWS", "Azure", "GCP", "Docker", "Kubernetes", "Jenkins", "GitHub Actions", "Kafka", "MQTT"],
       icon: Cloud,
       bg: "bg-purple text-white",
       span: "lg:col-span-5",
@@ -28,35 +28,27 @@ const Skills = () => {
     },
     {
       title: "databases",
-      skills: ["MongoDB", "MySQL", "PostgreSQL", "NoSQL"],
+      skills: ["MySQL", "PostgreSQL", "MongoDB", "DynamoDB", "NoSQL", "Query Optimization", "Indexing"],
       icon: Database,
       bg: "bg-white",
       span: "lg:col-span-7",
       tilt: "tilt-1",
     },
     {
-      title: "testing/tools",
-      skills: ["JUnit", "Selenium", "Postman", "Grafana", "Jira", "Camunda BPMN", "NiFi"],
-      icon: TestTube,
+      title: "testing & security",
+      skills: ["JUnit", "Selenium", "Postman", "Test Automation", "Unit/Integration Testing", "JWT", "OAuth2"],
+      icon: Shield,
       bg: "bg-pink text-white",
-      span: "lg:col-span-12",
+      span: "lg:col-span-6",
       tilt: "tilt-neg-1",
     },
     {
-      title: "ai/ml",
-      skills: ["TensorFlow", "PyTorch", "Google Gemini", "Scikit-learn", "Predictive Analytics"],
-      icon: Brain,
+      title: "tools & practices",
+      skills: ["Git Version Control", "Jira", "Grafana", "Camunda BPMN", "Apache NiFi", "Agile", "CI/CD", "OOP", "MVC", "System Design", "Event-Driven Architecture", "Data Structures", "Code Refactoring", "Web Development"],
+      icon: GitBranch,
       bg: "bg-primary",
       span: "lg:col-span-6",
       tilt: "tilt-2",
-    },
-    {
-      title: "practices",
-      skills: ["Agile", "CI/CD", "System Design", "Cloud Optimization", "Secure Coding", "Data Structures", "Compliance", "Version Control"],
-      icon: GitBranch,
-      bg: "bg-deep text-white",
-      span: "lg:col-span-6",
-      tilt: "tilt-neg-2",
     },
   ];
 
@@ -110,12 +102,12 @@ const Skills = () => {
         <div className="mt-12 flex justify-center">
           <div className="inline-flex items-center gap-6 px-8 py-4 bg-white brutal-border brutal-shadow rounded-full tilt-neg-1">
             <div className="text-center">
-              <div className="text-3xl font-display font-bold text-deep">50+</div>
+              <div className="text-3xl font-display font-bold text-deep">60+</div>
               <div className="text-xs font-body text-deep/60">technologies</div>
             </div>
             <div className="w-[3px] h-10 bg-deep rounded-full"></div>
             <div className="text-center">
-              <div className="text-3xl font-display font-bold text-deep">7</div>
+              <div className="text-3xl font-display font-bold text-deep">6</div>
               <div className="text-xs font-body text-deep/60">categories</div>
             </div>
             <div className="w-[3px] h-10 bg-deep rounded-full"></div>

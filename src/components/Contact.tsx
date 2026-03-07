@@ -11,7 +11,7 @@ const Contact = () => {
   ];
 
   const handleDownloadResume = () => {
-    window.open("https://drive.google.com/file/d/1QItMlpNxnJ8KD0kaLotL24Sfy_7OI5kT/view?usp=drive_link", "_blank");
+    window.open("https://drive.google.com/file/d/1NIAo0TSpN_srA-lIm8Dtdn31Uo10IYTR/view?usp=sharing", "_blank");
     toast({ title: "opening resume", description: "your resume is opening in a new tab." });
   };
 

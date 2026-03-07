@@ -56,7 +56,7 @@ const Navbar = () => {
         {/* CTA button */}
         <button
           onClick={() => {
-            window.open("https://drive.google.com/file/d/1QItMlpNxnJ8KD0kaLotL24Sfy_7OI5kT/view?usp=drive_link", "_blank");
+            window.open("https://drive.google.com/file/d/1NIAo0TSpN_srA-lIm8Dtdn31Uo10IYTR/view?usp=sharing", "_blank");
           }}
           className="hidden md:block bg-deep text-white px-5 py-2 rounded-full font-display font-bold text-sm bouncy"
         >
@@ -87,7 +87,7 @@ const Navbar = () => {
           ))}
           <button
             onClick={() => {
-              window.open("https://drive.google.com/file/d/1QItMlpNxnJ8KD0kaLotL24Sfy_7OI5kT/view?usp=drive_link", "_blank");
+              window.open("https://drive.google.com/file/d/1NIAo0TSpN_srA-lIm8Dtdn31Uo10IYTR/view?usp=sharing", "_blank");
             }}
             className="w-full mt-2 bg-deep text-white px-5 py-3 rounded-xl font-display font-bold text-sm"
           >

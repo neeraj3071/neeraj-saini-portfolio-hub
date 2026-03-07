@@ -3,7 +3,7 @@ import { Award, Rocket, TrendingUp } from "lucide-react";
 
 const About = () => {
   const stats = [
-    { icon: Award, value: "3.95", label: "graduate gpa", bg: "bg-primary" },
+    { icon: Award, value: "3.96", label: "graduate gpa", bg: "bg-primary" },
     { icon: Rocket, value: "30+", label: "microservices deployed", bg: "bg-purple text-white" },
     { icon: TrendingUp, value: "99.9%", label: "system uptime", bg: "bg-pink text-white" },
   ];
@@ -53,7 +53,7 @@ const About = () => {
               with a track record of improving efficiency and reducing deployment times.
             </p>
             <div className="flex flex-wrap gap-3 pt-4">
-              {["Java", "Python", "React.js", "Spring Boot", "AWS", "Docker", "Kubernetes", "Node.js"].map((tech) => (
+              {["Java", "Python", "React.js", "Node.js", "Next.js", "Nest.js", "Spring Boot", "AWS", "Docker", "Kubernetes"].map((tech) => (
                 <span
                   key={tech}
                   className="px-4 py-2 bg-white font-body font-medium text-sm text-deep brutal-border-2 brutal-shadow-sm rounded-full bouncy cursor-default"

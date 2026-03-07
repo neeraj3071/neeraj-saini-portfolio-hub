@@ -15,6 +15,18 @@ const Projects = () => {
       tilt: "tilt-1",
     },
     {
+      name: "invoicepro",
+      description: "cloud-based invoice management app with firebase authentication, real-time data sync, and professional print functionality for complete invoice lifecycle management.",
+      technologies: ["Vue.js 3", "Vuex 4", "Firebase", "Firestore", "SCSS", "Vue Router"],
+      sourceCode: "https://github.com/neeraj3071/InvoicePro",
+      liveDemo: "https://neeraj3071.github.io/InvoicePro/",
+      highlights: "firebase auth · real-time cloud sync · print-ready design",
+      featured: true,
+      bg: "bg-deep text-white",
+      span: "lg:col-span-5",
+      tilt: "tilt-1",
+    },
+    {
       name: "iot vehicle monitoring",
       description: "cloud-native iot solution for real-time vehicle monitoring with live telemetry for 500+ vehicles using mqtt streaming.",
       technologies: ["React.js", "Node.js", "Python", "MongoDB", "Kubernetes", "MQTT"],
