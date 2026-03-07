@@ -61,17 +61,17 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-24 bg-white relative overflow-hidden">
+    <section id="experience" className="py-20 md:py-24 bg-white relative overflow-hidden">
       {/* Stickers */}
-      <div className="absolute top-16 right-16 text-4xl float-sticker sticker rounded-xl bg-white p-2">💼</div>
-      <div className="absolute bottom-16 left-16 text-4xl float-sticker-reverse sticker rounded-xl bg-white p-2">🏢</div>
+      <div className="absolute top-16 right-16 text-4xl float-sticker sticker rounded-xl bg-white p-2 hidden md:block">💼</div>
+      <div className="absolute bottom-16 left-16 text-4xl float-sticker-reverse sticker rounded-xl bg-white p-2 hidden md:block">🏢</div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <div className="inline-block px-5 py-2 bg-pink text-white brutal-border-2 brutal-shadow-sm rounded-full mb-4 tilt-2">
             <span className="font-display font-bold text-sm uppercase">career journey</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-display font-bold text-deep">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-display font-bold text-deep">
             work <span className="text-gradient-brutal">experience</span>
           </h2>
         </div>
@@ -80,7 +80,7 @@ const Experience = () => {
           {experiences.map((exp, index) => (
             <div
               key={index}
-              className={`${exp.bg} ${exp.tilt} brutal-border brutal-shadow-lg rounded-brutal p-8 bouncy`}
+              className={`${exp.bg} ${exp.tilt} brutal-border brutal-shadow-lg rounded-brutal p-6 sm:p-8 bouncy`}
             >
               <div className="flex flex-wrap items-start gap-4 mb-4">
                 <div className="w-14 h-14 bg-white/20 brutal-border-2 rounded-2xl flex items-center justify-center flex-shrink-0">

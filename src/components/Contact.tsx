@@ -18,17 +18,17 @@ const Contact = () => {
   return (
     <section id="contact" className="relative overflow-hidden">
       {/* Giant CTA section */}
-      <div className="bg-pink py-24 relative overflow-hidden">
+      <div className="bg-pink py-20 md:py-24 relative overflow-hidden">
         {/* Giant emoji stickers at low opacity */}
-        <div className="absolute top-10 left-10 text-[120px] opacity-20 tilt-neg-3">💣</div>
-        <div className="absolute bottom-10 right-10 text-[120px] opacity-20 tilt-3">🦄</div>
+        <div className="absolute top-10 left-10 text-[120px] opacity-20 tilt-neg-3 hidden md:block">💣</div>
+        <div className="absolute bottom-10 right-10 text-[120px] opacity-20 tilt-3 hidden md:block">🦄</div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <div className="inline-block px-5 py-2 bg-white brutal-border-2 brutal-shadow-sm rounded-full mb-6 tilt-neg-1">
               <span className="font-display font-bold text-sm text-deep uppercase">let's connect</span>
             </div>
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white leading-[0.95]">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white leading-[0.95]">
               get in<br />touch
             </h2>
             <p className="font-body text-white/80 text-lg mt-6 max-w-xl mx-auto">
@@ -38,7 +38,7 @@ const Contact = () => {
           </div>
 
           {/* Contact cards */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl mx-auto mb-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 max-w-4xl mx-auto mb-12">
             {contactInfo.map((info, index) => {
               const Icon = info.icon;
               const tilts = ["tilt-1", "tilt-neg-1", "tilt-2", "tilt-neg-2", "tilt-1"];
@@ -48,7 +48,7 @@ const Contact = () => {
                   href={info.link}
                   target={info.link.startsWith("http") ? "_blank" : "_self"}
                   rel="noopener noreferrer"
-                  className={`${info.bg} ${tilts[index]} brutal-border brutal-shadow rounded-brutal p-6 bouncy block`}
+                  className={`${info.bg} ${tilts[index]} brutal-border brutal-shadow rounded-brutal p-5 sm:p-6 bouncy block`}
                 >
                   <Icon className="w-8 h-8 mb-3" />
                   <p className="font-display font-bold text-sm opacity-60 mb-1">{info.label}</p>
@@ -62,7 +62,7 @@ const Contact = () => {
           <div className="text-center">
             <button
               onClick={handleDownloadResume}
-              className="bg-white text-deep px-10 py-5 rounded-full font-display font-bold text-lg brutal-border brutal-shadow-lg bouncy wobble inline-flex items-center gap-2"
+              className="w-full sm:w-auto justify-center bg-white text-deep px-10 py-5 rounded-full font-display font-bold text-lg brutal-border brutal-shadow-lg bouncy wobble inline-flex items-center gap-2"
             >
               <Download className="w-5 h-5" />
               download resume
@@ -72,7 +72,7 @@ const Contact = () => {
       </div>
 
       {/* Footer */}
-      <footer className="bg-white border-t-[8px] border-deep relative overflow-hidden py-12">
+      <footer className="bg-white border-t-[8px] border-deep relative overflow-hidden py-10 sm:py-12">
         {/* Giant background text */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <span className="font-display font-bold text-[10vw] text-deep/5 uppercase whitespace-nowrap">
@@ -92,7 +92,7 @@ const Contact = () => {
                 href={social.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-deep text-white brutal-border-2 rounded-full flex items-center justify-center bouncy"
+                className="w-11 h-11 sm:w-12 sm:h-12 bg-deep text-white brutal-border-2 rounded-full flex items-center justify-center bouncy"
               >
                 <social.icon className="w-5 h-5" />
               </a>

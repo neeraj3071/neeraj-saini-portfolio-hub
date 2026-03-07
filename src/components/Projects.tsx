@@ -27,35 +27,13 @@ const Projects = () => {
       tilt: "tilt-1",
     },
     {
-      name: "github analytics platform",
-      description: "full-stack graphql analytics platform with apollo server and react dashboard for comprehensive repository insights, contributor stats, and automatic refactoring detection.",
-      technologies: ["Node.js", "TypeScript", "GraphQL", "Apollo", "PostgreSQL", "Prisma", "React", "MUI"],
-      sourceCode: "https://github.com/neeraj3071/Github-Analytics-Platform",
-      highlights: "graphql api · 40+ refactoring types · dataloader integration",
-      featured: true,
-      bg: "bg-purple text-white",
-      span: "lg:col-span-7",
-      tilt: "tilt-neg-1",
-    },
-    {
-      name: "c# refactoringminer",
-      description: "extended refactoringminer to detect 60+ refactoring types in c# projects using cpatminerv2 for parsing with 8-stage detection pipeline and srcml integration.",
-      technologies: ["Java 17", "C#", "Gradle", "srcML", "Eclipse JDT", "GumTree"],
-      sourceCode: "https://github.com/neeraj3071/RefactoringMiner",
-      highlights: "60+ refactoring types · 14 c# features · 8-stage pipeline",
-      featured: true,
-      bg: "bg-white",
-      span: "lg:col-span-5",
-      tilt: "tilt-2",
-    },
-    {
       name: "iot vehicle monitoring",
       description: "cloud-native iot solution for real-time vehicle monitoring with live telemetry for 500+ vehicles using mqtt streaming.",
       technologies: ["React.js", "Node.js", "Python", "MongoDB", "Kubernetes", "MQTT"],
       sourceCode: "https://github.com/neeraj3071/IOT---Enabled-Vehicle-Monitoring-Dashboard",
       highlights: "99.9% uptime · scalable data pipelines",
       featured: true,
-      bg: "bg-pink text-white",
+      bg: "bg-purple text-white",
       span: "lg:col-span-5",
       tilt: "tilt-neg-2",
     },
@@ -148,17 +126,17 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-24 bg-background relative overflow-hidden">
+    <section id="projects" className="py-20 md:py-24 bg-background relative overflow-hidden">
       {/* Stickers */}
-      <div className="absolute top-12 left-12 text-4xl float-sticker sticker rounded-xl bg-white p-2">📁</div>
-      <div className="absolute bottom-12 right-12 text-4xl float-sticker-reverse sticker rounded-xl bg-white p-2">🏗️</div>
+      <div className="absolute top-12 left-12 text-4xl float-sticker sticker rounded-xl bg-white p-2 hidden md:block">📁</div>
+      <div className="absolute bottom-12 right-12 text-4xl float-sticker-reverse sticker rounded-xl bg-white p-2 hidden md:block">🏗️</div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <div className="inline-block px-5 py-2 bg-deep text-white brutal-border-2 brutal-shadow-sm rounded-full mb-4 tilt-neg-1">
             <span className="font-display font-bold text-sm uppercase">portfolio</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-display font-bold text-deep">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-display font-bold text-deep">
             featured <span className="text-gradient-brutal">projects</span>
           </h2>
           <p className="font-body text-deep/60 mt-4 max-w-2xl mx-auto">
@@ -171,7 +149,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className={`${project.span} ${project.bg} ${project.tilt} brutal-border brutal-shadow rounded-brutal p-6 bouncy group`}
+              className={`${project.span} ${project.bg} ${project.tilt} brutal-border brutal-shadow rounded-brutal p-5 sm:p-6 bouncy group`}
             >
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-2">
@@ -241,7 +219,7 @@ const Projects = () => {
         <div className="text-center mt-16">
           <button
             onClick={() => window.open("https://github.com/neeraj3071", "_blank")}
-            className="bg-deep text-white px-10 py-5 rounded-full font-display font-bold text-lg brutal-border brutal-shadow bouncy wobble inline-flex items-center gap-2"
+            className="w-full sm:w-auto justify-center bg-deep text-white px-10 py-5 rounded-full font-display font-bold text-lg brutal-border brutal-shadow bouncy wobble inline-flex items-center gap-2"
           >
             <Github className="w-5 h-5" />
             view all on github
