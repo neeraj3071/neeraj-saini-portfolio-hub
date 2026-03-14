@@ -3,6 +3,18 @@ import { ExternalLink, Github, Youtube, Star, Folder } from "lucide-react";
 const Projects = () => {
   const projects = [
     {
+      name: "daily orbit",
+      description: "full-stack personal analytics cockpit to track sleep, workouts, habits, mood, and spending with ai-powered insights, life scoring, and automated reminders.",
+      technologies: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "Express 5", "Prisma", "PostgreSQL", "Gemini 2.0 Flash", "node-cron", "JWT"],
+      sourceCode: "https://github.com/neeraj3071/Personal-Life-DashBoard",
+      liveDemo: "https://daily-orbit-six.vercel.app",
+      highlights: "life score engine · ai forecast · frontend on vercel · api on render",
+      featured: true,
+      bg: "bg-primary",
+      span: "md:col-span-2 lg:col-span-7",
+      tilt: "tilt-2",
+    },
+    {
       name: "hot wheels marketplace",
       description: "production-ready marketplace for hot wheels collectors with real-time messaging, search & filtering, wishlists, and admin dashboard.",
       technologies: ["Next.js 16", "React 19", "TypeScript", "Node.js", "Express", "PostgreSQL", "Prisma", "JWT"],
