@@ -1,9 +1,9 @@
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
+import Projects from "@/components/Projects";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
-import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Navbar from "@/components/Navbar";
 import SectionWrapper from "@/components/SectionWrapper";
@@ -16,6 +16,10 @@ const Index = () => {
       <Marquee />
 
       <SectionWrapper animation="fade-up">
+        <Projects />
+      </SectionWrapper>
+
+      <SectionWrapper animation="fade-up" delay={100}>
         <About />
       </SectionWrapper>
 
@@ -23,12 +27,8 @@ const Index = () => {
         <Skills />
       </SectionWrapper>
 
-      <SectionWrapper animation="fade-left" delay={100}>
+      <SectionWrapper animation="fade-up" delay={100}>
         <Experience />
-      </SectionWrapper>
-
-      <SectionWrapper animation="fade-right" delay={100}>
-        <Projects />
       </SectionWrapper>
 
       <SectionWrapper animation="blur" delay={100}>
