@@ -1,0 +1,6 @@
+[build]
+  command = "npm --prefix developer-portfolio run build"
+  publish = "developer-portfolio/dist"
+
+[functions]
+  directory = "developer-portfolio/netlify/functions"
