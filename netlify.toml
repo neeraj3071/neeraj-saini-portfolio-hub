@@ -1,7 +1,6 @@
 [build]
-  base = "developer-portfolio"
-  command = "npm run build"
-  publish = "dist"
+  command = "npm --prefix developer-portfolio install && npm --prefix developer-portfolio run build"
+  publish = "developer-portfolio/dist"
 
 [functions]
   directory = "netlify/functions"
